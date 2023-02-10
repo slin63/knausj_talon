@@ -1,8 +1,8 @@
 #provide both anchored and unachored commands via 'over'
-phrase <user.text>$:
+say <user.text>$:
     user.add_phrase_to_history(text)
     insert(text)
-phrase <user.text> over:
+say <user.text> over:
     user.add_phrase_to_history(text)
     insert(text)
 {user.prose_formatter} <user.prose>$: user.insert_formatted(prose, prose_formatter)
@@ -24,3 +24,43 @@ select that: user.select_last_phrase()
 before that: user.before_last_phrase()
 nope that | scratch that: user.clear_last_phrase()
 nope that was <user.formatters>: user.formatters_reformat_last(formatters)
+
+# shit that doesn't work
+word today: 
+    insert("today")
+
+word followup date: 
+    insert("followupDate")
+
+word oopsy: 
+    insert("error")
+    
+word a line:
+    insert("align")
+
+# assign
+(go assign| assign | gosign): 
+    insert(" = ")
+
+(go return| goturn): 
+    insert("return ")
+ 
+dot <user.word>:
+    user.add_phrase_to_history(word)
+    insert(".")
+    insert(word)
+
+slash <user.word>:
+    user.add_phrase_to_history(word)
+    insert("/")
+    insert(word)
+    
+
+dash <user.word>:
+    user.add_phrase_to_history(word)
+    insert("-")
+    insert(word)
+
+    
+make fake email:
+    insert(user.random_email())

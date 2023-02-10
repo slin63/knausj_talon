@@ -7,7 +7,7 @@ def setup_default_alphabet():
     """set up common default alphabet.
 
     no need to modify this here, change your alphabet using alphabet.csv"""
-    initial_default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+    initial_default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made nex odd pit quiz red sun trap urge vest whale lex yank zip".split(
         " "
     )
     initial_letters_string = "abcdefghijklmnopqrstuvwxyz"
@@ -21,6 +21,8 @@ def setup_default_alphabet():
 alphabet_list = get_list_from_csv(
     "alphabet.csv", ("Letter", "Spoken Form"), setup_default_alphabet()
 )
+alphabet_list =setup_default_alphabet()
+
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
@@ -145,26 +147,24 @@ punctuation_words = {
     # Dragon. Possibly it has been fixed by later improvements to talon? -rntz
     "`": "`",
     ",": ",",  # <== these things
-    "back tick": "`",
-    "grave": "`",
-    "comma": ",",
-    # Workaround for issue with conformer b-series; see #946
-    "coma": ",",
-    "period": ".",
-    "full stop": ".",
-    "semicolon": ";",
+    "tick": "`",
+    # "grave": "`",
+    "comma": ",",#
+    # "period": ".",
+    # "full stop": ".",
+    "semi": ";",
     "colon": ":",
     "forward slash": "/",
     "question mark": "?",
     "exclamation mark": "!",
     "exclamation point": "!",
     "asterisk": "*",
-    "hash sign": "#",
-    "number sign": "#",
-    "percent sign": "%",
+    # "hash sign": "#",
+    # "number sign": "#",
+    # "percent sign": "%",
     "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
+    # "and sign": "&",
+    "amp": "&",
     # Currencies
     "dollar sign": "$",
     "pound sign": "£",
@@ -188,7 +188,7 @@ symbol_key_words = {
     "plus": "+",
     "tilde": "~",
     "bang": "!",
-    "down score": "_",
+    "crunder": "_",
     "underscore": "_",
     "paren": "(",
     "L paren": "(",
@@ -216,13 +216,12 @@ symbol_key_words = {
     "hash": "#",
     "percent": "%",
     "caret": "^",
-    "amper": "&",
     "pipe": "|",
     "dub quote": '"',
     "double quote": '"',
+    "pound": "#",
     # Currencies
     "dollar": "$",
-    "pound": "£",
 }
 
 # make punctuation words also included in {user.symbol_keys}
@@ -250,12 +249,13 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "wipe": "backspace",
-    "delete": "backspace",
+    # "wipe": "backspace",
+    "delete": "delete",
     #'junk': 'backspace',
-    "forward delete": "delete",
+    # "forward delete": "delete",
     "page up": "pageup",
     "page down": "pagedown",
+    "pace": "space",
 }
 # mac apparently doesn't have the menu key.
 if app.platform in ("windows", "linux"):

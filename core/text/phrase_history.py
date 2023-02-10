@@ -1,5 +1,7 @@
 import logging
 
+import random
+import string
 from talon import Module, actions, imgui
 
 mod = Module()
@@ -69,6 +71,14 @@ class Actions:
         """Hides the recent phrases window"""
 
         gui.hide()
+
+    def random_email() -> str:
+        """ugh"""
+        name = ''.join(random.choices(string.ascii_lowercase, k=10))
+        domain = ''.join(random.choices(string.ascii_lowercase, k=6))
+        return "{}@{}.com".format(name, domain)
+        # actions.insert("{}@{}.fake".format(name, domain))
+
 
 
 @imgui.open()

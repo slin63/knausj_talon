@@ -32,7 +32,6 @@ class EditActions:
         actions.key("enter")
         actions.edit.paste()
 
-
 @mod.action_class
 class Actions:
     def paste(text: str):

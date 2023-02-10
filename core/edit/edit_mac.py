@@ -1,5 +1,9 @@
 from talon import Context, actions
 
+import random
+import string
+
+
 ctx = Context()
 ctx.matches = r"""
 os: mac
@@ -42,7 +46,7 @@ class EditActions:
         actions.key("cmd-shift-up")
 
     def extend_left():
-        actions.key("shift-left")
+        actions.key("cmd-shift-left")
         # action(edit.extend_line):
 
     def extend_line_down():
@@ -68,7 +72,7 @@ class EditActions:
         # action(edit.extend_paragraph_start()):
 
     def extend_right():
-        actions.key("shift-right")
+        actions.key("cmd-shift-right")
         # action(edit.extend_sentence_end):
         # action(edit.extend_sentence_next):
         # action(edit.extend_sentence_previous):
@@ -196,3 +200,10 @@ class EditActions:
 
     def zoom_reset():
         actions.key("cmd-0")
+
+def random_email():
+    name = ''.join(random.choices(string.ascii_lowercase, k=10))
+    domain = ''.join(random.choices(string.ascii_lowercase, k=6))
+    return "{}@{}.fake".format(name, domain)
+    # actions.insert("{}@{}.fake".format(name, domain))
+

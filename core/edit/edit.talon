@@ -1,28 +1,32 @@
-find it: edit.find()
+# find it: edit.find()
 
-next one: edit.find_next()
+# next one: edit.find_next()
 
-go word left: edit.word_left()
+fam: edit.word_left()
 
-go word right: edit.word_right()
+fish: edit.word_right()
 
-go left: edit.left()
+# go left: edit.left()
 
-go right: edit.right()
+# go right: edit.right()
 
-go up: edit.up()
+# go up: edit.up()
 
-go down: edit.down()
+# go down: edit.down()
 
-go line start: edit.line_start()
+lefty: edit.line_start()
 
-go line end: edit.line_end()
+ricky: edit.line_end()
 
-go way left:
-    edit.line_start()
-    edit.line_start()
+# go way left:
+#     edit.line_start()
+#     edit.line_start()
 
-go way right: edit.line_end()
+# go way right: edit.line_end()
+
+return: 
+    edit.line_end()
+    key(enter)
 
 go way down: edit.file_end()
 
@@ -39,81 +43,99 @@ go page up: edit.page_up()
 # selecting
 select line: edit.select_line()
 
-select all: edit.select_all()
+select all: key(cmd-a)
 
 select left: edit.extend_left()
 
 select right: edit.extend_right()
 
-select up: edit.extend_line_up()
+# select up: edit.extend_line_up()
 
-select down: edit.extend_line_down()
+# select down: edit.extend_line_down()
 
-select word: edit.select_word()
+# select word: edit.select_word()
 
-select word left: edit.extend_word_left()
+scram: edit.extend_word_left()
 
-select word right: edit.extend_word_right()
+scrish: edit.extend_word_right()
 
-select way left: edit.extend_line_start()
+select line left: edit.extend_line_start()
 
-select way right: edit.extend_line_end()
+select line right: edit.extend_line_end()
 
-select way up: edit.extend_file_start()
+# select way up: edit.extend_file_start()
 
-select way down: edit.extend_file_end()
+# select way down: edit.extend_file_end()
 
 # editing
-indent [more]: edit.indent_more()
+# indent [more]: edit.indent_more()
 
-(indent less | out dent): edit.indent_less()
+# (indent less | out dent): edit.indent_less()
 
-# deleting
-clear line: edit.delete_line()
+# # deleting
+day line: 
+    key(cmd-l)
+    key(backspace)
 
-clear left: key(backspace)
+day [<number_small>]: 
+    key(backspace)
+    repeat(number_small-1)
 
-clear right: key(delete)
+scrap [<number_small>]: 
+    key(delete)
+    repeat(number_small-1)
 
-clear up:
-    edit.extend_line_up()
-    edit.delete()
+# clear right: key(delete)
 
-clear down:
-    edit.extend_line_down()
-    edit.delete()
+# clear up:
+#     edit.extend_line_up()
+#     edit.delete()
 
-clear word: edit.delete_word()
+# clear down:
+#     edit.extend_line_down()
+#     edit.delete()
 
-clear word left:
+# clear word: edit.delete_word()
+
+famey:
     edit.extend_word_left()
     edit.delete()
 
-clear word right:
+fishy:
     edit.extend_word_right()
     edit.delete()
 
-clear way left:
+snip left:
     edit.extend_line_start()
     edit.delete()
 
-clear way right:
+snip right:
     edit.extend_line_end()
     edit.delete()
 
-clear way up:
-    edit.extend_file_start()
-    edit.delete()
+# clear way up:
+#     edit.extend_file_start()
+#     edit.delete()
 
-clear way down:
-    edit.extend_file_end()
-    edit.delete()
+# clear way down:
+#     edit.extend_file_end()
+#     edit.delete()
 
-clear all:
-    edit.select_all()
-    edit.delete()
+# clear all:
+#     edit.select_all()
+#     edit.delete()
 
 #copy commands
+(stish | stash): 
+    key(cmd-c)
+
+spark:
+    edit.paste()
+
+    #  doesn't work for some reason
+# stishy: 
+#     edit.maccy()
+
 copy all:
     edit.select_all()
     edit.copy()
@@ -131,21 +153,20 @@ copy all:
 #     edit.extend_down()
 #     edit.copy()
 
-copy word:
-    edit.select_word()
-    edit.copy()
+# copy word:
+#     edit.select_word()
+#     edit.copy()
 
-copy word left: user.copy_word_left()
+# scram: user.copy_word_left()
 
-copy word right: user.copy_word_right()
+# stark: user.copy_word_right()
 
 copy line:
     edit.select_line()
     edit.copy()
 
 #cut commands
-cut all:
-    edit.select_all()
+snatch:
     edit.cut()
 #to do: do we want these variants
 # cut left:
@@ -161,20 +182,36 @@ cut all:
 #     edit.select_all()
 #     edit.cut()
 
-cut word:
-    edit.select_word()
-    edit.cut()
+# cut word:
+#     edit.select_word()
+#     edit.cut()
 
-cut word left: user.cut_word_left()
+# cut word left: user.cut_word_left()
 
-cut word right: user.cut_word_right()
+# cut word right: user.cut_word_right()
 
-cut line: user.cut_line()
+# cut line: user.cut_line()
 
 (pace | paste) all:
     edit.select_all()
     edit.paste()
 
-# duplication
-clone that: edit.selection_clone()
-clone line: edit.line_clone()
+# # duplication
+# clone that: edit.selection_clone()
+# clone line: edit.line_clone()
+
+sageit: 
+    key(cmd-s)
+
+
+(uppercase | capitalize) (that | this):
+    text = edit.selected_text()
+    user.insert_formatted(text, "ALL_CAPS")
+
+lower (that | this):
+    text = edit.selected_text()
+    user.insert_formatted(text, "ALL_LOWERCASE")
+
+title (that | this):
+    text = edit.selected_text()
+    user.insert_formatted(text, "CAPITALIZE_ALL_WORDS")
